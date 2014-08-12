@@ -528,6 +528,20 @@ class PostTrainingFeedbackSurveyHandler(BaseHandler):
         self.render('post_training_survey.html')
 
 
+class PreTrainingRegistrationSurveyHandler(BaseHandler):
+    """Handler for the pre-training registration survey page."""
+
+    def get(self):
+        """Handles GET requests."""
+        student = self.personalize_page_and_get_enrolled(
+            supports_transient_student=True)
+        if not student:
+            return
+
+        self.template_value['navbar'] = {}
+        self.render('pre_training_survey.html')
+
+
 class StudentProfileHandler(BaseHandler):
     """Handles the click to 'Progress' link in the nav bar."""
 
