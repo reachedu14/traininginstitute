@@ -542,6 +542,20 @@ class PreTrainingRegistrationSurveyHandler(BaseHandler):
         self.render('pre_training_survey.html')
 
 
+class HelpHandler(BaseHandler):
+    """Handler for the pre-training registration survey page."""
+
+    def get(self):
+        """Handles GET requests."""
+        student = self.personalize_page_and_get_enrolled(
+            supports_transient_student=True)
+        if not student:
+            return
+
+        self.template_value['navbar'] = {'help': True}
+        self.render('help.html')
+
+
 class StudentProfileHandler(BaseHandler):
     """Handles the click to 'Progress' link in the nav bar."""
 

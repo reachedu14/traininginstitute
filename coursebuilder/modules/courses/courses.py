@@ -51,6 +51,7 @@ def register_module():
         ('/unit', lessons.UnitHandler),
 
         # Added by Fed
+        ('/help', utils.HelpHandler),
         ('/registration-survey', utils.PreTrainingRegistrationSurveyHandler),
         ('/post-training-survey', utils.PostTrainingFeedbackSurveyHandler)]
 
